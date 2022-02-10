@@ -17,7 +17,6 @@ import {
 
 const Platillos = () => {
   const dataUrl = "http://localhost:3000/platillo";
- 
 
   const [data, setData] = useState([]);
 
@@ -35,41 +34,36 @@ const Platillos = () => {
   return (
     <div>
       <Container>
-        {/* <div>
+        <div>
           {data.length > 0 && (
-            // <Table>
-            //   <thead>
-            //     <tr>
-            //       <th>ID</th>
-            //       <th>Nombre Mascota</th>
-            //       <th>Propietario</th>
-            //       <th>Fecha</th>
-            //       <th>Hora</th>
-            //       <th>Telefono</th>
-            //       <th>Sintomas</th>
-            //       <th>Acciones</th>
-            //     </tr>
-            //   </thead>
-            //   <tbody>
-            //     {data.length > 0 &&
-            //       data?.map((dato) => {
-            //         return (
-            //           <tr key={dato.id}>
-            //             <td>{dato.id}</td>
-            //             <td>{dato.nombre_de_mascota}</td>
-            //             <td>{dato.propietario}</td>
-            //             <td>{dato.fecha}</td>
-            //             <td>{dato.hora}</td>
-            //             <td>{dato.telefono}</td>
-            //             <td>{dato.sintomas}</td>
-            //             <td></td>
-            //           </tr>
-            //         );
-            //       })}
-            //   </tbody>
-            // </Table>
+            <Table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Categoria</th>
+                  <th>Cantidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.length > 0 &&
+                  data?.map((dato) => {
+                    return (
+                      <tr key={dato.id}>
+                        <td>{dato.id}</td>
+                        <td>{dato.nombre}</td>
+                        <td>{dato.precio}</td>
+                        <td>{dato.categoria}</td>
+
+                        <td></td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </Table>
           )}
-        </div> */}
+        </div>
       </Container>
     </div>
   );
