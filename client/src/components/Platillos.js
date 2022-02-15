@@ -20,7 +20,7 @@ const Platillos = () => {
 
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
-  const{}
+  const [platillos, setPlatillos] = useState([]);
 
   const getApi = async () => {
     await axios.get(dataUrl).then((response) => {
@@ -33,17 +33,37 @@ const Platillos = () => {
     await getApi();
   }, []);
 
-  const getTotal = (e, precio) => {
-    const subTotal = (precio * e.target.value) + total;
-    setTotal(subTotal);
-    
-    // setInput({
-    //   ...input,
-    //   [e.target.name]: e.target.value,
-    // });
+  const getTotal = (e, precio, id) => {
+    const subTotal = precio * e.target.value + total;
+    let platos = platillos;
 
-    console.log(" precio", precio);
-    console.log(" e.target.value", e.target.value);
+    if (platillos.length > 0) {
+      let aux;
+      platillos.map((item) => {
+        console.log("ID: ", id);
+        console.log("item.ID: ", item.id);
+
+        if (id === item.id) {
+          console.log("1.Entro");
+          aux = item.id;
+          arreglo[contador].cantidad = dato.cantidad;
+        }
+      });
+
+
+      if (aux) {
+        
+      } else {
+        platos.push({ id: id, precio: precio, cant: Number(e.target.value) });
+      }
+    } else {
+      platos.push({ id: id, precio: precio, cant: Number(e.target.value) });
+    }
+
+    setPlatillos(platos);
+    setTotal(subTotal);
+
+    console.log(" platos", platos);
   };
 
   return (
@@ -76,7 +96,7 @@ const Platillos = () => {
                             name="cantidad"
                             type="number"
                             min="0"
-                            onChange={(e) => getTotal(e, dato.precio)}
+                            onChange={(e) => getTotal(e, dato.precio, dato.id)}
                           />
                         </td>
                       </tr>
@@ -88,7 +108,9 @@ const Platillos = () => {
 
           <div>
             <h1>Resumen de Pedido</h1>
-            <div>{total}</div>
+            <p>mesa:</p>
+            <p>Hora:</p>
+            <h3> Total:{total}$</h3>
           </div>
         </div>
       </Container>
