@@ -49,6 +49,7 @@ const Platillos = () => {
           arreglo[contador].cantidad = dato.cantidad;
         }
       });
+    
 
 
       if (aux) {
